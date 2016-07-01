@@ -22,6 +22,6 @@ error:
   error( "error message2", "DEBUG" );   // won't be logged
   
   //with backtrace
-  error( "error message2", "TEST", true ); 
+  error( "error message3", "TEST", true ); 
 ?>
 ```
