@@ -54,12 +54,13 @@ class Debug {
 		}
 	}
 
+	// check if the debug level of this debug object is higher or equal to the global debug level
 	public function check_level(){
 		if( !defined("DEBUG_LEVEL") ){
 			define( "DEBUG_LEVEL", "INFO" );
 		}
-		if( $this->log_levels[DEBUG_LEVEL] != "NONE" ){
-			if( $this->level == "UNKNOWN" ){
+		if( $this->log_levels[DEBUG_LEVEL] != "NONE" ){	// never print anything when debugging is disabled
+			if( $this->level == "UNKNOWN" ){	// if no level was set for this debug message, print it
 				return true;
 			}
 			if( isset($this->log_levels[$this->level]) && $this->log_levels[$this->level] <= $this->log_levels[DEBUG_LEVEL] ){
@@ -84,13 +85,13 @@ class Debug {
 		}
 
 		$file_padding += 7;	
-		$line_padding += 6;
+		$line_padding += 7;
 		foreach($bt_data as $func){
 
 			if( $func['file'] != __FILE__ ){				// ignore functions from this file
 				$backtrace .= " [".$count."] => ";
-				$backtrace .= sprintf( "%-".$file_padding."s", "File: ".$func['file']." " );
-				$backtrace .= sprintf( "%-".$line_padding."s", "Line: ".$func['line']." " );
+				$backtrace .= sprintf( "%-".$file_padding."s", "File: ".$func['file'] );
+				$backtrace .= sprintf( "%-".$line_padding."s", "Line: ".$func['line'] );
 				$backtrace .= "Function: ".$func['function']."(";
 				foreach($func['args'] as $arg){
 					switch($arg){
@@ -118,7 +119,7 @@ class Debug {
 			$pid = getmypid();
 			exec( "ps ".$pid. "| awk '{ print substr($0, index($0,$5)) }'", $output, $return );
 			$call = $output[1];
-			$backtrace .= " [".$count."] => start: Called from commandline. (".get_current_user().": '".$call."')";
+			$backtrace .= " [".$count."] => start: Called from commandline: ".$call." (".get_current_user().") ";
 		}
 		return( $backtrace );
 	}
