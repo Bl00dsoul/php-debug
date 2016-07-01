@@ -25,3 +25,14 @@ error:
   error( "error message3", "TEST", true ); 
 ?>
 ```
+  
+debug levels:
+```
+NONE, disables debugging  
+TEST  
+ERROR  
+WARNING  
+INFO  
+DEBUG  
+PROGRAM_FLOW  
+```
