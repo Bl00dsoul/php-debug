@@ -1,6 +1,6 @@
 ## php-debug
   
-Simple single file debug functions for php.  
+Simple, single file, debug functions for php.  
   
 var_debug:  
 ```
