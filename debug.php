@@ -17,7 +17,7 @@
 
 function var_debug( $var ){
 	$debug = new Debug();
-	$name = $debug::var_name();
+	$name = $debug->var_name();
 	$result = var_export( $var, true );
 
 	if( !isset($name) || $name == false ){
