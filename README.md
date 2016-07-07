@@ -7,7 +7,8 @@ var_debug:
 <?php
   include("debug.php");
 
-  $test = 42;
+  $test = 41;
+  $test++;
   var_debug($test);     // log: '$test = 42;'
 ?>
 ```
