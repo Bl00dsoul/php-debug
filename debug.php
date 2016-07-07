@@ -53,11 +53,19 @@ class Debug {
 			$this->level = "UNKNOWN";
 		}
 	}
+	
+	function set_debug_level( $level ){
+		if( isset($level) && isset($this->log_levels[ $level ]) ){
+			define( "DEBUG_LEVEL", $level );
+			return true;
+		}
+		return false;
+	}
 
 	// check if the debug level of this debug object is higher or equal to the global debug level
 	public function check_level(){
 		if( !defined("DEBUG_LEVEL") ){
-			define( "DEBUG_LEVEL", "INFO" );
+			set_debug_level( "INFO" );
 		}
 		if( $this->log_levels[DEBUG_LEVEL] != "NONE" ){	// never print anything when debugging is disabled
 			if( $this->level == "UNKNOWN" ){	// if no level was set for this debug message, print it
