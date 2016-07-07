@@ -17,7 +17,8 @@ error:
 <?php
   include("debug.php");
 
-  define( "DEBUG_LEVEL", "INFO" );
+  $debug = new Debug();
+  $debug->set_debug_level("INFO");
   error( "error message", "WARNING" );  // will be logged
   error( "error message2", "DEBUG" );   // won't be logged
   
