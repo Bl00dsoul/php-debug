@@ -54,7 +54,7 @@ class Debug {
 		}
 	}
 	
-	function set_debug_level( $level ){
+	public function set_debug_level( $level ){
 		if( isset($level) && isset($this->log_levels[ $level ]) ){
 			define( "DEBUG_LEVEL", $level );
 			return true;
